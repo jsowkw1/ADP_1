@@ -3,17 +3,13 @@ package Employee
 import "fmt"
 
 type Employee struct {
+	ID     int
 	Name   string
-	Age    int
 	Salary float64
 }
 
-// Method
-func (e *Employee) Work() {
-	fmt.Printf("%s is working...\n", e.Name)
-}
-
-// Interface
-type Worker interface {
-	Work()
+func (e Employee) Info() {
+	fmt.Println("ID:", e.ID)
+	fmt.Println("Name:", e.Name)
+	fmt.Println("Salary:", e.Salary)
 }

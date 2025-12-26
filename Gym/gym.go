@@ -3,16 +3,23 @@ package Gym
 import "fmt"
 
 type Gym struct {
-	Name      string
-	Members   map[string]bool
-	Equipment []string
+	Members map[int]string
 }
 
-func (g *Gym) AddMember(name string) {
-	g.Members[name] = true
-	fmt.Printf("%s joined %s gym!\n", name, g.Name)
+func NewGym() Gym {
+	return Gym{
+		Members: make(map[int]string),
+	}
 }
 
-func (g *Gym) ListEquipment() {
-	fmt.Println("Equipment available:", g.Equipment)
+func (g *Gym) AddMember(id int, name string) {
+	g.Members[id] = name
+	fmt.Println("Member added to gym.")
+}
+
+func (g Gym) Info() {
+	fmt.Println("Gym Members:")
+	for id, name := range g.Members {
+		fmt.Println(id, "-", name)
+	}
 }

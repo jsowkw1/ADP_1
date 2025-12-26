@@ -3,20 +3,23 @@ package Wallet
 import "fmt"
 
 type Wallet struct {
-	Owner   string
 	Balance float64
 }
 
-func (w *Wallet) AddMoney(amount float64) {
+func (w *Wallet) Deposit(amount float64) {
 	w.Balance += amount
-	fmt.Printf("%s added %.2f. New balance: %.2f\n", w.Owner, amount, w.Balance)
+	fmt.Println("Money added.")
 }
 
-func (w *Wallet) SpendMoney(amount float64) {
+func (w *Wallet) Withdraw(amount float64) {
 	if amount <= w.Balance {
 		w.Balance -= amount
-		fmt.Printf("%s spent %.2f. Remaining balance: %.2f\n", w.Owner, amount, w.Balance)
+		fmt.Println("Money withdrawn.")
 	} else {
-		fmt.Println("Not enough balance")
+		fmt.Println("Not enough balance.")
 	}
+}
+
+func (w Wallet) Info() {
+	fmt.Println("Wallet balance:", w.Balance)
 }
